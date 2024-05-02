@@ -1,29 +1,94 @@
 class Main {
 
   public static void main(String[] args) {
-    IStack stack = new Stack();
-    stack.push(5);
-    stack.push(7);
-    stack.push(2);
-    stack.push(6);
-    stack.push(3);
-    stack.push(11);
+    IStack pilhaUm = new StackNode();
+    IStack pilhaDois = new StackNode();
+    pilhaUm.push(5);
+    pilhaUm.push(7);
+    pilhaUm.push(2);
+    pilhaUm.push(6);
+    pilhaUm.push(3);
+
+    if (pilhaUm instanceof StackNode) {
+      StackNode pilhaUmConcreta = (StackNode) pilhaUm;
+      StackNode pilhaDoisConcreta = (StackNode) pilhaDois;
+      while (pilhaUmConcreta.size() > 1) {
+        int maior = pilhaUmConcreta.compararRemoverMaior();
+        System.out.print(maior);
+        System.out.print(", ");
+        pilhaDoisConcreta.push(pilhaUmConcreta.pop());
+        int menor = pilhaUmConcreta.compararRemoverMenor();
+        System.out.print(menor);
+        System.out.print(", ");
+        pilhaDoisConcreta.push(pilhaUmConcreta.pop());
+      }
+
+      if (!pilhaUmConcreta.isEmpty()) {
+        int ultimo = (Integer) pilhaUmConcreta.pop();
+        System.out.print(ultimo);
+      }
+
+      System.out.println("");
+
+      while (pilhaDoisConcreta.size() > 1) {
+        int maior = pilhaDoisConcreta.compararRemoverMaior();
+        System.out.print(maior);
+        System.out.print(", ");
+        pilhaDoisConcreta.push(pilhaDoisConcreta.pop());
+        pilhaDoisConcreta.compararRemoverMenor();
+        pilhaDoisConcreta.push(pilhaDoisConcreta.pop());
+      }
+
+      System.out.println("");
+
+      if (!pilhaDoisConcreta.isEmpty()) {
+        int ultimo = (Integer) pilhaDoisConcreta.pop();
+        System.out.print(ultimo);
+      }
+    }
+
     System.out.println("");
 
-    int i = 0;
-    do {
-      Object element = stack.pop();
-      System.out.println(element);
-      i++;
-    } while (i <= stack.size());
+    pilhaUm.push(3);
+    pilhaUm.push(5);
+    pilhaUm.push(1);
+    pilhaUm.push(4);
+    pilhaUm.push(10);
+    pilhaUm.push(6);
+    pilhaUm.push(8);
+    if (pilhaUm instanceof StackNode) {
+      StackNode pilhaUmConcreta = (StackNode) pilhaUm;
+      StackNode pilhaDoisConcreta = (StackNode) pilhaDois;
+      int maior = pilhaUmConcreta.compararRemoverMaior();
+      System.out.print(maior);
+      System.out.print(", ");
+      while (pilhaUmConcreta.size() > 1) {
+        System.out.print("top: " + pilhaUmConcreta.top());
+        System.out.println("");
+        int menor = pilhaUmConcreta.compararRemoverMenor();
+        pilhaDoisConcreta.push(pilhaUmConcreta.pop());
+        System.out.print(menor);
+        System.out.print(", ");
+      }
 
-    System.out.println("");
 
-    IStack stackNode = new StackNode();
-    stackNode.push("Larissa");
-    stackNode.push("Xavier");
-    System.out.println(stackNode.pop());
-    System.out.println(stackNode.pop());
 
+      if (!pilhaUmConcreta.isEmpty()) {
+        int ultimo = (Integer) pilhaUmConcreta.pop();
+        pilhaDois.push(ultimo);
+      }
+
+
+      while (pilhaDoisConcreta.size() > 1) {
+        System.out.println(pilhaDoisConcreta.pop());
+      }
+
+      System.out.println("");
+
+      if (!pilhaDoisConcreta.isEmpty()) {
+        int ultimo = (Integer) pilhaDoisConcreta.pop();
+        System.out.print(ultimo);
+      }
+    }
   }
 }

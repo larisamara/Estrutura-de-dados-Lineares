@@ -3,6 +3,6 @@ public interface IVector {
   public Object replaceAtRank( int rank, Object element);
   public void insertAtRank(int rank, Object element);
   public Object removeAtRank(int rank);
-  public Boolean isEmpty();
-  public Integer size();
+  public boolean isEmpty();
+  public int sizeInsert();
 }

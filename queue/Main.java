@@ -23,12 +23,8 @@ class Main {
 
     fila = new QueueTwoStack();
     fila.enqueue("Larissa");
-    fila.print();
     fila.enqueue("Samara");
-    fila.print();
     fila.enqueue("Xavier");
-    fila.print();
-    fila.dequeue();
     fila.print();
   }
 }

@@ -26,5 +26,51 @@ class Main {
     fila.enqueue("Samara");
     fila.enqueue("Xavier");
     fila.print();
+    // Criando fila com capacidade 5
+        CircularArrayQueue queue = new CircularArrayQueue(5);
+        
+        System.out.println("=== Testando Fila com Array Circular ===");
+        
+        // Inserindo elementos
+        System.out.println("\nInserindo elementos:");
+        queue.enqueue("A");
+        queue.enqueue("B");
+        queue.enqueue("C");
+        queue.print();
+        
+        // Removendo elementos
+        System.out.println("\nRemovendo elemento: " + queue.dequeue());
+        queue.print();
+        
+        // Inserindo mais elementos (testa comportamento circular)
+        System.out.println("\nInserindo mais elementos:");
+        queue.enqueue("D");
+        queue.enqueue("E");
+        queue.enqueue("F");
+        queue.print();
+        
+        // Verificando se está cheia
+        System.out.println("\nEstá cheia? " + queue.isFull());
+        
+        // Tentando inserir em fila cheia
+        try {
+            queue.enqueue("G");
+        } catch (RuntimeException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+        
+        // Removendo todos os elementos
+        System.out.println("\nEsvaziando a fila:");
+        while (!queue.isEmpty()) {
+            System.out.println("Removido: " + queue.dequeue());
+            queue.print();
+        }
+        
+        // Testando peek
+        CircularArrayQueue queue2 = new CircularArrayQueue(3);
+        queue2.enqueue("X");
+        queue2.enqueue("Y");
+        System.out.println("\nPrimeiro elemento (peek): " + queue2.peek());
+        queue2.print();
   }
 }
